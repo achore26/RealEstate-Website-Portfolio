@@ -244,29 +244,69 @@ document.addEventListener("DOMContentLoaded", function () {
   const galleryItems = document.querySelectorAll(".gallery-item");
   if (window.innerWidth <= 768) {
     galleryItems.forEach((item) => {
-      // Remove hover effects on mobile and add touch feedback
-      item.addEventListener("touchstart", function () {
-        this.style.opacity = "0.8";
-      });
+      // Add touch feedback and ensure images load properly
+      const img = item.querySelector('img');
+      if (img) {
+        // Ensure images are loaded
+        if (!img.complete) {
+          img.addEventListener('load', function() {
+            this.style.opacity = '1';
+          });
+        }
+        
+        // Add touch feedback
+        item.addEventListener("touchstart", function () {
+          this.style.transform = 'scale(0.98)';
+          this.style.opacity = "0.8";
+        });
 
-      item.addEventListener("touchend", function () {
-        this.style.opacity = "1";
-      });
+        item.addEventListener("touchend", function () {
+          this.style.transform = 'scale(1)';
+          this.style.opacity = "1";
+        });
+      }
     });
   }
 
   // Optimize video for mobile
   const video = document.getElementById("video-background");
-  if (video && window.innerWidth <= 768) {
-    // Pause video on mobile to save battery and data
-    video.pause();
-    video.style.display = "none";
-
-    // Add a fallback background image for mobile
-    const overlay = document.querySelector(".overlay");
-    if (overlay) {
-      overlay.style.background =
-        "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)";
+  if (video) {
+    if (window.innerWidth <= 768) {
+      // On mobile, optimize video settings
+      video.setAttribute('preload', 'metadata');
+      video.muted = true;
+      video.playsInline = true;
+      
+      // Add a play button overlay for mobile users to choose
+      const playButton = document.createElement('div');
+      playButton.innerHTML = '▶️ Tap to play background video';
+      playButton.style.cssText = `
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        z-index: 2;
+        font-size: 14px;
+        border: 1px solid rgba(255,255,255,0.3);
+      `;
+      
+      const mainContent = document.querySelector('.main-content');
+      if (mainContent) {
+        mainContent.appendChild(playButton);
+        
+        playButton.addEventListener('click', function() {
+          video.play();
+          playButton.style.display = 'none';
+        });
+      }
+    } else {
+      // On desktop, auto-play as normal
+      video.play().catch(e => console.log('Video autoplay prevented:', e));
     }
   }
 });

@@ -480,16 +480,18 @@ ge-specific styles */
 
 /* Hero background images for different pages */
 .about-hero {
-  background-image: url("../media/metlife\ picture.jpg");
+  background-image: url("../media/about-hero.jpg");
   background-color: #2a2a2a; /* fallback color */
 }
 
 .work-hero {
   background-image: url("../media/the-address.jpeg");
+  background-color: #2a2a2a; /* fallback color */
 }
 
 .contact-hero {
   background-image: url("../media/skyline.jpg");
+  background-color: #2a2a2a; /* fallback color */
 }
 
 /* Responsive adjustments for pages */
@@ -733,30 +735,30 @@ ge-specific styles */
     top: 20px;
     left: 20px;
   }
-  
+
   .logo-text {
     font-size: 1rem;
     padding: 10px 15px;
     letter-spacing: 1px;
   }
-  
+
   .navbar {
     top: 20px;
     right: 20px;
   }
-  
+
   .back-to-top {
     bottom: 20px;
     right: 20px;
     width: 45px;
     height: 45px;
   }
-  
+
   .back-to-top svg {
     width: 18px;
     height: 18px;
   }
-}/* Fix for navigation menu white border issue temporarily though */
+} /* Fix for navigation menu white border issue temporarily though */
 .nav-menu.active {
   opacity: 1;
   visibility: visible;
@@ -771,7 +773,7 @@ ge-specific styles */
   padding: 0;
   border: none;
   outline: none;
-}/* Con
+} /* Con
 tact Form Styles */
 .contact-form-section {
   background: linear-gradient(to bottom, #1a1a1a 0%, #0f0f0f 100%);
@@ -914,22 +916,22 @@ tact Form Styles */
   .contact-form-section {
     padding: 60px 15px;
   }
-  
+
   .form-header h2 {
     font-size: 2rem;
   }
-  
+
   .form-group input,
   .form-group select,
   .form-group textarea {
     padding: 12px 15px;
   }
-  
+
   .submit-btn {
     padding: 15px 30px;
     font-size: 0.9rem;
   }
-}/* Custo
+} /* Custo
 m Dialog Styles */
 .dialog-overlay {
   position: fixed;
@@ -1022,15 +1024,15 @@ m Dialog Styles */
     padding: 30px 25px;
     margin: 20px;
   }
-  
+
   .dialog-title {
     font-size: 1.5rem;
   }
-  
+
   .dialog-message {
     font-size: 1rem;
   }
-}/* Enh
+} /* Enh
 anced Mobile Optimizations */
 
 /* Mobile-first improvements */
@@ -1041,108 +1043,108 @@ anced Mobile Optimizations */
     letter-spacing: 3px;
     line-height: 1.2;
   }
-  
+
   .tagline {
     font-size: 1rem;
     letter-spacing: 1px;
     padding: 0 10px;
   }
-  
+
   /* Navigation improvements */
   .logo-container {
     top: 15px;
     left: 15px;
   }
-  
+
   .logo-text {
     font-size: 0.9rem;
     padding: 8px 12px;
     letter-spacing: 1px;
   }
-  
+
   .navbar {
     top: 15px;
     right: 15px;
   }
-  
+
   .nav-toggle {
     width: 45px;
     height: 45px;
     padding: 12px;
   }
-  
+
   .hamburger-line {
     width: 20px;
     height: 1.5px;
     margin: 2px 0;
   }
-  
+
   /* Navigation menu mobile optimization */
   .nav-menu a {
     font-size: 1.8rem;
     margin: 15px 0;
   }
-  
+
   .nav-menu li {
     margin: 20px 0;
   }
-  
+
   /* Page hero optimizations */
   .page-hero h1 {
     font-size: 2rem;
     letter-spacing: 2px;
   }
-  
+
   /* Content sections */
   .content-section {
     margin-bottom: 60px;
   }
-  
+
   .content-section h2 {
     font-size: 1.8rem;
     margin-bottom: 20px;
     letter-spacing: 1px;
   }
-  
+
   .content-section p {
     font-size: 1rem;
     line-height: 1.6;
     letter-spacing: 0.5px;
   }
-  
+
   /* Footer mobile optimization */
   .footer-cta {
     padding: 40px 15px;
   }
-  
+
   .footer-cta h2 {
     font-size: 1.2rem;
     margin-bottom: 30px;
   }
-  
+
   .footer-cta h3 {
     font-size: 0.8rem;
   }
-  
+
   .footer-info {
     padding: 30px 15px;
   }
-  
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .footer-column h4 {
     font-size: 0.8rem;
     margin-bottom: 10px;
   }
-  
+
   .footer-column p {
     font-size: 0.75rem;
     line-height: 1.4;
   }
-  
+
   /* Back to top button */
   .back-to-top {
     bottom: 15px;
@@ -1150,7 +1152,7 @@ anced Mobile Optimizations */
     width: 40px;
     height: 40px;
   }
-  
+
   .back-to-top svg {
     width: 16px;
     height: 16px;
@@ -1164,51 +1166,51 @@ anced Mobile Optimizations */
     padding: 15px 20px;
     margin: 10px 0;
   }
-  
+
   .footer-column a {
     padding: 5px 0;
     display: inline-block;
   }
-  
+
   .social-links a {
     padding: 10px;
     margin: 0 5px;
   }
-  
+
   /* Improve text readability */
   .main-content {
     padding: 0 15px;
   }
-  
+
   .page-content {
     padding: 60px 15px;
   }
-  
+
   .content-container {
     padding: 40px 0;
   }
-  
+
   /* Listings page mobile optimization */
   .listings-separator {
     padding: 40px 15px;
   }
-  
+
   .separator-content {
     gap: 30px;
   }
-  
+
   .listing-info h2 {
     font-size: 1.3rem;
   }
-  
+
   .listing-info .location {
     font-size: 0.9rem;
   }
-  
+
   .detail-column h6 {
     font-size: 0.75rem;
   }
-  
+
   .detail-column p {
     font-size: 0.8rem;
   }
@@ -1220,15 +1222,15 @@ anced Mobile Optimizations */
     height: 100vh;
     justify-content: center;
   }
-  
+
   .logo {
     font-size: 2.5rem;
   }
-  
+
   .tagline {
     font-size: 1.1rem;
   }
-  
+
   .page-hero h1 {
     font-size: 2.5rem;
   }
@@ -1240,24 +1242,24 @@ anced Mobile Optimizations */
     font-size: 2rem;
     letter-spacing: 2px;
   }
-  
+
   .tagline {
     font-size: 0.9rem;
     letter-spacing: 0.5px;
   }
-  
+
   .nav-menu a {
     font-size: 1.5rem;
   }
-  
+
   .page-hero h1 {
     font-size: 1.8rem;
   }
-  
+
   .content-section h2 {
     font-size: 1.5rem;
   }
-  
+
   .footer-cta h2 {
     font-size: 1rem;
   }
@@ -1268,36 +1270,149 @@ anced Mobile Optimizations */
   * {
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .page-hero {
     background-attachment: scroll; /* Better performance on mobile */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
-  
+
   /* Reduce animations on mobile for better performance */
   .gallery-item:hover {
     transform: none;
   }
-  
+
   .gallery-item:hover img {
     transform: none;
   }
-  
+
   /* Optimize form for mobile */
   .contact-form-section {
     padding: 40px 10px;
   }
-  
+
   .form-group input,
   .form-group select,
   .form-group textarea {
     padding: 12px 15px;
     font-size: 16px; /* Prevents zoom on iOS */
   }
-  
+
   .submit-btn {
     padding: 15px 25px;
     font-size: 0.9rem;
     width: 100%;
     justify-content: center;
   }
+}
+/* Enhanced Image and Video Support */
+
+/* Ensure all images load properly */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hero sections - ensure images work on all devices */
+.page-hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Mobile hero optimizations */
+@media (max-width: 768px) {
+  .page-hero {
+    background-attachment: scroll; /* Better performance on mobile */
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  /* Ensure hero images are visible on mobile */
+  .about-hero,
+  .work-hero,
+  .contact-hero,
+  .listings-hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Video optimizations */
+#video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Gallery image optimizations */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Ensure images don't break layout on mobile */
+@media (max-width: 480px) {
+  .gallery-item {
+    min-height: 200px;
+  }
+
+  .gallery-item img {
+    min-height: 200px;
+  }
+
+  /* Hero sections mobile adjustments */
+  .page-hero {
+    min-height: 70vh; /* Slightly shorter on very small screens */
+  }
+
+  .page-hero-content {
+    padding: 20px;
+  }
+}
+
+/* Loading states for images */
+.gallery-item img:not([src]) {
+  background: #2a2a2a;
+  opacity: 0.5;
+}
+
+.gallery-item img[src] {
+  opacity: 1;
+}
+
+/* Improve image loading performance */
+.gallery-item img {
+  loading: lazy;
+}
+
+/* Video play button styling */
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.video-play-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(1.05);
 }
