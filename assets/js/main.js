@@ -55,93 +55,97 @@ window.addEventListener("scroll", checkSectionVisibility);
 window.addEventListener("load", checkSectionVisibility);
 
 // Page-specific functionality
-if (document.body.classList.contains('home')) {
+if (document.body.classList.contains("home")) {
   // Home page - no scroll functionality needed
-  console.log('Home page loaded');
+  console.log("Home page loaded");
 } else {
   // Other pages - smooth scroll to top functionality
-  window.addEventListener('load', () => {
+  window.addEventListener("load", () => {
     window.scrollTo(0, 0);
   });
 }
 
 // Back to Top Button Functionality
-const backToTopButton = document.getElementById('backToTop');
+const backToTopButton = document.getElementById("backToTop");
 
 // Show/hide back to top button based on scroll position
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   if (window.pageYOffset > 300) {
-    backToTopButton.classList.add('visible');
+    backToTopButton.classList.add("visible");
   } else {
-    backToTopButton.classList.remove('visible');
+    backToTopButton.classList.remove("visible");
   }
 });
 
 // Smooth scroll to top when button is clicked
-backToTopButton.addEventListener('click', () => {
+backToTopButton.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 });
 
 // Contact Form Functionality
-const contactForm = document.getElementById('contactForm');
+const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
+  contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    
+
     // Get form data
     const formData = new FormData(contactForm);
     const formObject = {};
-    
+
     // Convert FormData to object
     for (let [key, value] of formData.entries()) {
       formObject[key] = value;
     }
-    
+
     // Basic validation
     if (!formObject.name || !formObject.email || !formObject.message) {
-      alert('Please fill in all required fields.');
+      alert("Please fill in all required fields.");
       return;
     }
-    
+
     // Send form data to email service
-    const submitBtn = contactForm.querySelector('.submit-btn');
+    const submitBtn = contactForm.querySelector(".submit-btn");
     const originalText = submitBtn.innerHTML;
-    
+
     // Show loading state
-    submitBtn.innerHTML = '<span>Sending...</span>';
+    submitBtn.innerHTML = "<span>Sending...</span>";
     submitBtn.disabled = true;
-    
+
     // Option 1: Using Formspree (replace YOUR_FORM_ID with actual Formspree form ID)
-    fetch('https://formspree.io/f/YOUR_FORM_ID', {
-      method: 'POST',
+    fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formObject)
+      body: JSON.stringify(formObject),
     })
-    .then(response => {
-      if (response.ok) {
-        showSuccessDialog(formObject.name);
-        contactForm.reset();
-      } else {
-        alert('Sorry, there was an error sending your message. Please try again.');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Sorry, there was an error sending your message. Please try again.');
-    })
-    .finally(() => {
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-    });
-    
+      .then((response) => {
+        if (response.ok) {
+          showSuccessDialog(formObject.name);
+          contactForm.reset();
+        } else {
+          alert(
+            "Sorry, there was an error sending your message. Please try again."
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert(
+          "Sorry, there was an error sending your message. Please try again."
+        );
+      })
+      .finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      });
+
     // Option 2: For testing - just log the data (remove this in production)
-    console.log('Form data that would be sent:', formObject);
+    console.log("Form data that would be sent:", formObject);
   });
 }
 
@@ -159,29 +163,138 @@ function showSuccessDialog(userName) {
       </div>
     </div>
   `;
-  
+
   // Add dialog to body
-  document.body.insertAdjacentHTML('beforeend', dialogHTML);
-  
+  document.body.insertAdjacentHTML("beforeend", dialogHTML);
+
   // Show dialog with animation
   setTimeout(() => {
-    document.getElementById('successDialog').classList.add('active');
+    document.getElementById("successDialog").classList.add("active");
   }, 10);
-  
+
   // Close dialog when clicking overlay
-  document.getElementById('successDialog').addEventListener('click', function(e) {
-    if (e.target === this) {
-      closeSuccessDialog();
-    }
-  });
+  document
+    .getElementById("successDialog")
+    .addEventListener("click", function (e) {
+      if (e.target === this) {
+        closeSuccessDialog();
+      }
+    });
 }
 
 function closeSuccessDialog() {
-  const dialog = document.getElementById('successDialog');
+  const dialog = document.getElementById("successDialog");
   if (dialog) {
-    dialog.classList.remove('active');
+    dialog.classList.remove("active");
     setTimeout(() => {
       dialog.remove();
     }, 300);
   }
 }
+
+// Mobile Optimizations
+document.addEventListener("DOMContentLoaded", function () {
+  // Prevent zoom on iOS when focusing inputs
+  const inputs = document.querySelectorAll("input, select, textarea");
+  inputs.forEach((input) => {
+    input.addEventListener("focus", function () {
+      if (window.innerWidth <= 768) {
+        document
+          .querySelector("meta[name=viewport]")
+          .setAttribute(
+            "content",
+            "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          );
+      }
+    });
+
+    input.addEventListener("blur", function () {
+      if (window.innerWidth <= 768) {
+        document
+          .querySelector("meta[name=viewport]")
+          .setAttribute(
+            "content",
+            "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          );
+      }
+    });
+  });
+
+  // Improve touch scrolling on mobile
+  if ("ontouchstart" in window) {
+    document.body.style.webkitOverflowScrolling = "touch";
+  }
+
+  // Optimize navigation for mobile
+  const navMenu = document.querySelector(".nav-menu");
+  if (navMenu) {
+    // Prevent body scroll when menu is open on mobile
+    navMenu.addEventListener(
+      "touchmove",
+      function (e) {
+        if (navMenu.classList.contains("active")) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+  }
+
+  // Mobile-specific gallery optimizations
+  const galleryItems = document.querySelectorAll(".gallery-item");
+  if (window.innerWidth <= 768) {
+    galleryItems.forEach((item) => {
+      // Remove hover effects on mobile and add touch feedback
+      item.addEventListener("touchstart", function () {
+        this.style.opacity = "0.8";
+      });
+
+      item.addEventListener("touchend", function () {
+        this.style.opacity = "1";
+      });
+    });
+  }
+
+  // Optimize video for mobile
+  const video = document.getElementById("video-background");
+  if (video && window.innerWidth <= 768) {
+    // Pause video on mobile to save battery and data
+    video.pause();
+    video.style.display = "none";
+
+    // Add a fallback background image for mobile
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      overlay.style.background =
+        "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)";
+    }
+  }
+});
+
+// Handle orientation changes
+window.addEventListener("orientationchange", function () {
+  // Refresh layout after orientation change
+  setTimeout(function () {
+    window.scrollTo(0, 0);
+
+    // Recalculate heights if needed
+    const sections = document.querySelectorAll(".section");
+    sections.forEach((section) => {
+      section.style.minHeight = window.innerHeight + "px";
+    });
+  }, 100);
+});
+
+// Optimize scroll performance on mobile
+let ticking = false;
+function updateScrollElements() {
+  // Your scroll-based animations here
+  ticking = false;
+}
+
+window.addEventListener("scroll", function () {
+  if (!ticking) {
+    requestAnimationFrame(updateScrollElements);
+    ticking = true;
+  }
+});

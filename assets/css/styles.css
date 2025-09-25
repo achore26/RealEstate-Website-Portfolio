@@ -756,8 +756,7 @@ ge-specific styles */
     width: 18px;
     height: 18px;
   }
-}/
-* Fix for navigation menu white border issue */
+}/* Fix for navigation menu white border issue temporarily though */
 .nav-menu.active {
   opacity: 1;
   visibility: visible;
@@ -1030,5 +1029,275 @@ m Dialog Styles */
   
   .dialog-message {
     font-size: 1rem;
+  }
+}/* Enh
+anced Mobile Optimizations */
+
+/* Mobile-first improvements */
+@media (max-width: 480px) {
+  /* Typography optimizations */
+  .logo {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    line-height: 1.2;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 0 10px;
+  }
+  
+  /* Navigation improvements */
+  .logo-container {
+    top: 15px;
+    left: 15px;
+  }
+  
+  .logo-text {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    letter-spacing: 1px;
+  }
+  
+  .navbar {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .nav-toggle {
+    width: 45px;
+    height: 45px;
+    padding: 12px;
+  }
+  
+  .hamburger-line {
+    width: 20px;
+    height: 1.5px;
+    margin: 2px 0;
+  }
+  
+  /* Navigation menu mobile optimization */
+  .nav-menu a {
+    font-size: 1.8rem;
+    margin: 15px 0;
+  }
+  
+  .nav-menu li {
+    margin: 20px 0;
+  }
+  
+  /* Page hero optimizations */
+  .page-hero h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  /* Content sections */
+  .content-section {
+    margin-bottom: 60px;
+  }
+  
+  .content-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .content-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Footer mobile optimization */
+  .footer-cta {
+    padding: 40px 15px;
+  }
+  
+  .footer-cta h2 {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .footer-cta h3 {
+    font-size: 0.8rem;
+  }
+  
+  .footer-info {
+    padding: 30px 15px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .footer-column h4 {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .footer-column p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  
+  /* Back to top button */
+  .back-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .back-to-top svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+  /* Increase touch targets */
+  .nav-menu a {
+    padding: 15px 20px;
+    margin: 10px 0;
+  }
+  
+  .footer-column a {
+    padding: 5px 0;
+    display: inline-block;
+  }
+  
+  .social-links a {
+    padding: 10px;
+    margin: 0 5px;
+  }
+  
+  /* Improve text readability */
+  .main-content {
+    padding: 0 15px;
+  }
+  
+  .page-content {
+    padding: 60px 15px;
+  }
+  
+  .content-container {
+    padding: 40px 0;
+  }
+  
+  /* Listings page mobile optimization */
+  .listings-separator {
+    padding: 40px 15px;
+  }
+  
+  .separator-content {
+    gap: 30px;
+  }
+  
+  .listing-info h2 {
+    font-size: 1.3rem;
+  }
+  
+  .listing-info .location {
+    font-size: 0.9rem;
+  }
+  
+  .detail-column h6 {
+    font-size: 0.75rem;
+  }
+  
+  .detail-column p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .main-content {
+    height: 100vh;
+    justify-content: center;
+  }
+  
+  .logo {
+    font-size: 2.5rem;
+  }
+  
+  .tagline {
+    font-size: 1.1rem;
+  }
+  
+  .page-hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .logo {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  .tagline {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .nav-menu a {
+    font-size: 1.5rem;
+  }
+  
+  .page-hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .content-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .footer-cta h2 {
+    font-size: 1rem;
+  }
+}
+
+/* Improve scrolling performance on mobile */
+@media (max-width: 768px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .page-hero {
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+  
+  /* Reduce animations on mobile for better performance */
+  .gallery-item:hover {
+    transform: none;
+  }
+  
+  .gallery-item:hover img {
+    transform: none;
+  }
+  
+  /* Optimize form for mobile */
+  .contact-form-section {
+    padding: 40px 10px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 15px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .submit-btn {
+    padding: 15px 25px;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
   }
 }
