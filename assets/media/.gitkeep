@@ -1,0 +1,12 @@
+# Media Assets Directory
+
+Place your video files, images, and other media assets here.
+
+Example structure:
+- videos/
+  - background-video.mp4
+- images/
+  - logo.png
+  - hero-image.jpg
+- audio/
+  - background-music.mp3
