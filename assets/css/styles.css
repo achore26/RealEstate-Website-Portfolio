@@ -478,13 +478,14 @@ ge-specific styles */
   color: #ccc;
 }
 
-/* Hero background images for different pages */
+/* Hero background images for different pages - DESKTOP FIRST */
 .about-hero {
   background-image: url("../media/about-hero.jpg");
   background-color: #2a2a2a; /* fallback color */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: scroll; /* Mobile-friendly default */
 }
 
 .work-hero {
@@ -493,6 +494,7 @@ ge-specific styles */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: scroll; /* Mobile-friendly default */
 }
 
 .contact-hero {
@@ -501,6 +503,16 @@ ge-specific styles */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: scroll; /* Mobile-friendly default */
+}
+
+.listings-hero {
+  background-image: url("../media/algo.png");
+  background-color: #2a2a2a; /* fallback color */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* Mobile-friendly default */
 }
 
 /* Responsive adjustments for pages */
@@ -1317,25 +1329,87 @@ img {
   display: block;
 }
 
-/* Mobile hero optimizations - ensure images work on all devices */
+/* Mobile fallback image - hidden on desktop, shown on mobile */
+.mobile-hero-img {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* CRITICAL: Mobile hero optimizations - comprehensive mobile fix */
 @media (max-width: 768px) {
-  .page-hero {
-    background-attachment: scroll !important; /* Better performance on mobile */
-    min-height: 100vh;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
+  /* Show mobile fallback image */
+  .mobile-hero-img {
+    display: block !important;
   }
 
-  /* Ensure hero images are visible on mobile */
+  /* Hide CSS background on mobile to prevent conflicts */
   .about-hero,
   .work-hero,
   .contact-hero,
   .listings-hero {
+    background-image: none !important;
+  }
+  .page-hero {
+    /* Fix iOS viewport height bug */
+    height: 100vh;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+
+    /* Force background properties */
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    /* Ensure proper rendering */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Force individual hero backgrounds on mobile */
+  .about-hero {
+    background-image: url("../media/about-hero.jpg") !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
+    background-color: #2a2a2a !important;
+  }
+
+  .work-hero {
+    background-image: url("../media/the-address.jpeg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    background-color: #2a2a2a !important;
+  }
+
+  .contact-hero {
+    background-image: url("../media/skyline.jpg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    background-color: #2a2a2a !important;
+  }
+
+  .listings-hero {
+    background-image: url("../media/algo.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    background-color: #2a2a2a !important;
   }
 }
 
@@ -1366,13 +1440,28 @@ img {
     min-height: 200px;
   }
 
-  /* Hero sections mobile adjustments */
+  /* CRITICAL: Small screen hero fixes */
   .page-hero {
-    min-height: 70vh; /* Slightly shorter on very small screens */
+    height: 100vh !important;
+    height: -webkit-fill-available !important;
+    min-height: 100vh !important;
+    min-height: -webkit-fill-available !important;
   }
 
   .page-hero-content {
     padding: 20px;
+  }
+
+  /* Force reload background images on small screens */
+  .about-hero,
+  .work-hero,
+  .contact-hero,
+  .listings-hero {
+    background-attachment: scroll !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
   }
 }
 

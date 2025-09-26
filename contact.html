@@ -7,6 +7,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Contact - VISUALHOUSE</title>
+    <!-- Preload critical images for mobile -->
+    <link rel="preload" href="assets/media/skyline.jpg" as="image">
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
@@ -36,6 +38,8 @@
 
     <!-- Hero Section -->
     <section class="page-hero contact-hero">
+      <!-- Mobile fallback image -->
+      <img src="assets/media/skyline.jpg" alt="Contact Hero" class="mobile-hero-img" loading="eager">
       <div class="page-hero-content">
         <h1>Contact</h1>
       </div>
