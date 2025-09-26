@@ -82,6 +82,46 @@ body.home {
   z-index: -1;
 }
 
+/* Video Loading Animation */
+.video-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.video-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Hide loader on desktop when mobile background is not visible */
+@media (min-width: 769px) {
+  .video-loader {
+    display: block;
+  }
+}
+
 /* Mobile Image Background */
 #mobile-background {
   position: fixed;

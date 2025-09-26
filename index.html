@@ -12,11 +12,17 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body class="home">
-    <!-- Video Background -->
-    <video id="video-background" autoplay muted loop playsinline>
+    <!-- Video Background with mobile optimizations -->
+    <video id="video-background" autoplay muted loop playsinline preload="auto" poster="assets/media/01.jpg">
       <source src="assets/media/background-video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
+    
+    <!-- Video loading indicator -->
+    <div id="video-loader" class="video-loader">
+      <div class="loader-spinner"></div>
+      <p>Loading...</p>
+    </div>
     
     <!-- Mobile Background Image - Load immediately (do NOT lazyload) -->
     <img id="mobile-background"
@@ -77,6 +83,82 @@
     <!-- Mobile Optimizer -->
     <script src="assets/js/mobile-optimizer.js"></script>
     <script>
+      // Register Service Worker for video caching
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('Service Worker registered successfully:', registration.scope);
+              
+              // Preload video after service worker is active
+              if (registration.active) {
+                preloadVideo(registration);
+              } else {
+                registration.addEventListener('statechange', () => {
+                  if (registration.active) {
+                    preloadVideo(registration);
+                  }
+                });
+              }
+            })
+            .catch(error => {
+              console.log('Service Worker registration failed:', error);
+            });
+        });
+        
+        function preloadVideo(registration) {
+          // Ask service worker to cache video proactively
+          const channel = new MessageChannel();
+          channel.port1.onmessage = event => {
+            if (event.data.success) {
+              console.log('Video preloaded successfully');
+            }
+          };
+          
+          registration.active.postMessage({
+            type: 'CACHE_VIDEO'
+          }, [channel.port2]);
+        }
+      }
+
+      // Video loading handler
+      const video = document.getElementById('video-background');
+      const loader = document.getElementById('video-loader');
+      const isMobile = window.innerWidth <= 768;
+      
+      // Hide loader when video is ready to play
+      function hideLoader() {
+        if (loader) {
+          loader.classList.add('hidden');
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 500);
+        }
+      }
+      
+      // Show loader initially on mobile or if video isn't ready
+      if (video && loader) {
+        // Hide loader when video can play through
+        video.addEventListener('canplaythrough', hideLoader);
+        
+        // Also hide loader when video starts playing (fallback)
+        video.addEventListener('playing', hideLoader);
+        
+        // Hide loader after 3 seconds regardless (prevent stuck loader)
+        setTimeout(hideLoader, 3000);
+        
+        // On mobile, hide loader immediately if mobile background is shown
+        if (isMobile) {
+          setTimeout(hideLoader, 1000);
+        }
+        
+        // Handle video loading errors
+        video.addEventListener('error', () => {
+          console.log('Video failed to load, hiding loader');
+          hideLoader();
+        });
+      }
+
       // Initialize AOS with mobile-optimized settings
       AOS.init({
         duration: 1000,
