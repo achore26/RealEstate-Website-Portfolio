@@ -7,8 +7,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>VISUALHOUSE - We Envision Design and Evoke Desire</title>
-    <!-- Preload critical mobile images -->
-    <link rel="preload" href="assets/media/01.jpg" as="image" media="(max-width: 768px)">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body class="home">
@@ -18,16 +18,23 @@
       Your browser does not support the video tag.
     </video>
     
-    <!-- Mobile Background Image with fallback -->
-    <img id="mobile-background" 
-         src="assets/media/01.jpg" 
+    <!-- Mobile Background Image - Load immediately (do NOT lazyload) -->
+    <img id="mobile-background"
+         src="assets/media/01.jpg"
          alt="Background"
+         decoding="async"
+         importance="high"
          onerror="this.src='assets/media/about-hero.jpg'; this.onerror=null;" />
+    
+    <!-- Fallback for when JavaScript is disabled -->
+    <noscript>
+      <img src="assets/media/01.jpg" alt="Background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-1;">
+    </noscript>
     
     <div class="overlay"></div>
 
     <!-- Logo -->
-    <div class="logo-container">
+    <div class="logo-container" data-aos="fade-in" data-aos-delay="300">
       <a href="index.html" class="logo-text">Visual House</a>
     </div>
 
@@ -52,8 +59,8 @@
 
     <!-- Main Content -->
     <section id="home" class="main-content">
-      <h1 class="logo">VISUALHOUSE</h1>
-      <p class="tagline">WE ENVISION DESIGN AND EVOKE DESIRE</p>
+      <h1 class="logo" data-aos="zoom-in" data-aos-delay="500">VISUALHOUSE</h1>
+      <p class="tagline" data-aos="fade-up" data-aos-delay="700">WE ENVISION DESIGN AND EVOKE DESIRE</p>
     </section>
 
     <!-- Back to Top Button -->
@@ -63,6 +70,35 @@
       </svg>
     </div>
 
+    <!-- Lazysizes for responsive images -->
+    <script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js" async></script>
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Mobile Optimizer -->
+    <script src="assets/js/mobile-optimizer.js"></script>
+    <script>
+      // Initialize AOS with mobile-optimized settings
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 50,           // Reduced offset for better mobile triggering
+        easing: 'ease-in-out',
+        // Better mobile handling
+        disable: false,       // Don't disable on mobile
+        startEvent: 'DOMContentLoaded', // Ensure it starts immediately
+        useClassNames: false,
+        disableMutationObserver: false,
+        debounceDelay: 50,    // Faster response
+        throttleDelay: 99,    // Optimized for mobile
+      });
+      
+      // Force AOS refresh on mobile to handle non-scrolling pages
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          AOS.refresh();
+        }, 100);
+      }
+    </script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

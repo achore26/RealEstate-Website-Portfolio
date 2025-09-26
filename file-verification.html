@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Verification Test - Visual House</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-item { margin: 20px 0; padding: 10px; border: 1px solid #ddd; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .image-test { max-width: 200px; max-height: 200px; object-fit: cover; }
+        .file-list { background: #f8f9fa; padding: 15px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Visual House - File Verification Test</h1>
+    <p><strong>Current URL:</strong> <span id="current-url"></span></p>
+    <p><strong>Test Purpose:</strong> Verify all media files load correctly on GitHub Pages</p>
+
+    <div class="file-list">
+        <h3>Expected Files in assets/media/:</h3>
+        <ul>
+            <li>01.jpg</li>
+            <li>02.jpeg</li>
+            <li>03.jpeg</li>
+            <li>04.jpeg</li>
+            <li>about-hero.jpg</li>
+            <li>background-video.mp4</li>
+            <li>skyline.jpg</li>
+            <li>the-address.jpeg</li>
+        </ul>
+    </div>
+
+    <h2>Critical Image Loading Tests</h2>
+
+    <div class="test-item" id="test-01">
+        <h3>01.jpg (Mobile Hero)</h3>
+        <img src="assets/media/01.jpg" alt="01.jpg" class="image-test" 
+             onload="markSuccess('test-01', '01.jpg loaded successfully')"
+             onerror="markError('test-01', '01.jpg failed to load - CHECK CASE SENSITIVITY')">
+        <div class="result"></div>
+    </div>
+
+    <div class="test-item" id="test-about-hero">
+        <h3>about-hero.jpg (Fallback)</h3>
+        <img src="assets/media/about-hero.jpg" alt="about-hero.jpg" class="image-test"
+             onload="markSuccess('test-about-hero', 'about-hero.jpg loaded successfully')"
+             onerror="markError('test-about-hero', 'about-hero.jpg failed to load - CHECK CASE SENSITIVITY')">
+        <div class="result"></div>
+    </div>
+
+    <div class="test-item" id="test-02">
+        <h3>02.jpeg (About Hero Mobile)</h3>
+        <img src="assets/media/02.jpeg" alt="02.jpeg" class="image-test"
+             onload="markSuccess('test-02', '02.jpeg loaded successfully')"
+             onerror="markError('test-02', '02.jpeg failed to load - CHECK CASE SENSITIVITY')">
+        <div class="result"></div>
+    </div>
+
+    <div class="test-item" id="test-03">
+        <h3>03.jpeg (Contact Hero Mobile)</h3>
+        <img src="assets/media/03.jpeg" alt="03.jpeg" class="image-test"
+             onload="markSuccess('test-03', '03.jpeg loaded successfully')"
+             onerror="markError('test-03', '03.jpeg failed to load - CHECK CASE SENSITIVITY')">
+        <div class="result"></div>
+    </div>
+
+    <div class="test-item" id="test-04">
+        <h3>04.jpeg (Listings Hero Mobile)</h3>
+        <img src="assets/media/04.jpeg" alt="04.jpeg" class="image-test"
+             onload="markSuccess('test-04', '04.jpeg loaded successfully')"
+             onerror="markError('test-04', '04.jpeg failed to load - CHECK CASE SENSITIVITY')">
+        <div class="result"></div>
+    </div>
+
+    <div class="test-item" id="test-video">
+        <h3>background-video.mp4</h3>
+        <video width="200" height="150" controls>
+            <source src="assets/media/background-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="result">
+            <p>If video appears above, background-video.mp4 loaded successfully.</p>
+            <p>If not, check file name case sensitivity.</p>
+        </div>
+    </div>
+
+    <h2>Network Analysis</h2>
+    <div class="test-item">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Open your browser's Developer Tools (F12)</li>
+            <li>Go to the <strong>Network</strong> tab</li>
+            <li>Reload this page</li>
+            <li>Look for any files with status codes like <strong>404</strong> (red)</li>
+            <li>Any 404 errors indicate case sensitivity or missing file issues</li>
+        </ol>
+    </div>
+
+    <script>
+        document.getElementById('current-url').textContent = window.location.href;
+
+        function markSuccess(testId, message) {
+            const testElement = document.getElementById(testId);
+            const resultDiv = testElement.querySelector('.result');
+            testElement.classList.add('success');
+            resultDiv.innerHTML = `<strong>✅ SUCCESS:</strong> ${message}`;
+        }
+
+        function markError(testId, message) {
+            const testElement = document.getElementById(testId);
+            const resultDiv = testElement.querySelector('.result');
+            testElement.classList.add('error');
+            resultDiv.innerHTML = `<strong>❌ ERROR:</strong> ${message}`;
+        }
+
+        // Test file existence with fetch (additional verification)
+        const criticalFiles = [
+            'assets/media/01.jpg',
+            'assets/media/about-hero.jpg',
+            'assets/media/02.jpeg',
+            'assets/media/03.jpeg',
+            'assets/media/04.jpeg'
+        ];
+
+        console.log('Testing file accessibility...');
+        criticalFiles.forEach(file => {
+            fetch(file, { method: 'HEAD' })
+                .then(response => {
+                    console.log(`✅ ${file}: ${response.status}`);
+                })
+                .catch(error => {
+                    console.log(`❌ ${file}: Failed to load`);
+                });
+        });
+    </script>
+</body>
+</html>
