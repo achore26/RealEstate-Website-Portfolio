@@ -82,6 +82,27 @@ body.home {
   z-index: -1;
 }
 
+/* GIF Fallback Background */
+#gif-fallback {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+  display: none;
+  /* Smooth transition when showing */
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+#gif-fallback.active {
+  display: block;
+  opacity: 1;
+}
+
 /* Video Loading Animation */
 .video-loader {
   position: fixed;
@@ -367,6 +388,13 @@ footer {
   
   #mobile-background {
     display: block;
+  }
+  
+  /* Show GIF fallback on mobile if video fails */
+  #gif-fallback.mobile-active {
+    display: block !important;
+    opacity: 1 !important;
+    z-index: -1;
   }
 
   /* Fix gallery images - prevent over-cropping on mobile */

@@ -10,7 +10,8 @@ const CRITICAL_ASSETS = [
   '/assets/js/main.js',
   '/assets/js/mobile-optimizer.js',
   '/assets/media/01.jpg',
-  '/assets/media/about-hero.jpg'
+  '/assets/media/about-hero.jpg',
+  '/assets/media/home-gif.gif'
 ];
 
 // Video assets to cache on first request
