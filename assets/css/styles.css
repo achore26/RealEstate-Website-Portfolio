@@ -29,6 +29,18 @@ body.home {
   z-index: -1;
 }
 
+/* Mobile Image Background */
+#mobile-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  display: none;
+}
+
 /* Overlay to make text more readable */
 .overlay {
   position: fixed;
@@ -251,6 +263,15 @@ footer {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  /* Hide video and show image on mobile */
+  #video-background {
+    display: none;
+  }
+  
+  #mobile-background {
+    display: block;
+  }
+
   .logo {
     font-size: 3rem;
     letter-spacing: 5px;
