@@ -275,7 +275,7 @@ ge-specific styles */
   height: 100vh;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -482,16 +482,25 @@ ge-specific styles */
 .about-hero {
   background-image: url("../media/about-hero.jpg");
   background-color: #2a2a2a; /* fallback color */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .work-hero {
   background-image: url("../media/the-address.jpeg");
   background-color: #2a2a2a; /* fallback color */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .contact-hero {
   background-image: url("../media/skyline.jpg");
   background-color: #2a2a2a; /* fallback color */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Responsive adjustments for pages */
@@ -1271,13 +1280,6 @@ anced Mobile Optimizations */
     -webkit-overflow-scrolling: touch;
   }
 
-  .page-hero {
-    background-attachment: scroll; /* Better performance on mobile */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
   /* Reduce animations on mobile for better performance */
   .gallery-item:hover {
     transform: none;
@@ -1315,21 +1317,14 @@ img {
   display: block;
 }
 
-/* Hero sections - ensure images work on all devices */
-.page-hero {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-/* Mobile hero optimizations */
+/* Mobile hero optimizations - ensure images work on all devices */
 @media (max-width: 768px) {
   .page-hero {
-    background-attachment: scroll; /* Better performance on mobile */
+    background-attachment: scroll !important; /* Better performance on mobile */
     min-height: 100vh;
-    background-size: cover;
-    background-position: center center;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
   }
 
   /* Ensure hero images are visible on mobile */
@@ -1337,9 +1332,10 @@ img {
   .work-hero,
   .contact-hero,
   .listings-hero {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
   }
 }
 
