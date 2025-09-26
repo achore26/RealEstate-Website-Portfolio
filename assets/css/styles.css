@@ -6,6 +6,13 @@
   font-family: "Arial", sans-serif;
 }
 
+/* Mobile-friendly image and video scaling */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 body {
   overflow-x: hidden;
   margin: 0;
@@ -40,6 +47,12 @@ body.home {
   object-position: center;
   z-index: -1;
   display: none;
+  /* iOS Safari specific fixes */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Prevent image from being too large on high-res screens */
+  max-width: none;
+  max-height: none;
 }
 
 /* Overlay to make text more readable */

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Image Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            border: 2px solid #ccc;
+            padding: 10px;
+        }
+        
+        .test-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        .fullscreen-test {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .overlay-text {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h2>Image Loading Test</h2>
+        <p>Testing individual images from your media folder:</p>
+        
+        <h3>01.jpg</h3>
+        <img src="assets/media/01.jpg" alt="Test Image 1" class="test-image">
+        
+        <h3>02.jpeg</h3>
+        <img src="assets/media/02.jpeg" alt="Test Image 2" class="test-image">
+        
+        <h3>about-hero.jpg</h3>
+        <img src="assets/media/about-hero.jpg" alt="About Hero" class="test-image">
+        
+        <h3>skyline.jpg</h3>
+        <img src="assets/media/skyline.jpg" alt="Skyline" class="test-image">
+    </div>
+    
+    <div class="test-section">
+        <h2>Fullscreen Background Test</h2>
+        <p>Testing fullscreen background (like your mobile homepage):</p>
+        <div style="position: relative; height: 300px; overflow: hidden;">
+            <img src="assets/media/01.jpg" alt="Fullscreen Test" class="fullscreen-test" style="position: absolute;">
+            <div class="overlay-text">
+                <h1>VISUALHOUSE</h1>
+                <p>This text should be visible over the background</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Video Test</h2>
+        <video controls style="max-width: 100%; height: auto;">
+            <source src="assets/media/background-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div class="test-section">
+        <h2>Network Status</h2>
+        <p>Check your browser's developer tools (Network tab) to see if any images show as 404 errors.</p>
+        <p>Current page URL: <span id="current-url"></span></p>
+    </div>
+    
+    <script>
+        document.getElementById('current-url').textContent = window.location.href;
+    </script>
+</body>
+</html>

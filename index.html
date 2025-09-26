@@ -7,17 +7,22 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>VISUALHOUSE - We Envision Design and Evoke Desire</title>
+    <!-- Preload critical mobile images -->
+    <link rel="preload" href="assets/media/01.jpg" as="image" media="(max-width: 768px)">
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body class="home">
     <!-- Video Background -->
-    <video id="video-background" autoplay muted loop>
+    <video id="video-background" autoplay muted loop playsinline>
       <source src="assets/media/background-video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     
-    <!-- Mobile Background Image -->
-    <img id="mobile-background" src="assets/media/01.jpg" alt="Background" />
+    <!-- Mobile Background Image with fallback -->
+    <img id="mobile-background" 
+         src="assets/media/01.jpg" 
+         alt="Background"
+         onerror="this.src='assets/media/about-hero.jpg'; this.onerror=null;" />
     
     <div class="overlay"></div>
 
