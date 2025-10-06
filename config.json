@@ -1,0 +1,18 @@
+{
+    "backup_path": "./backups",
+    "alert_sound_enabled": true,
+    "report_export_path": "./reports",
+    "expiry_alert_days": 5,
+    "database_name": "hotel_inventory.db",
+    "app_title": "Madit Hotel Inventory",
+    "version": "1.0.0",
+    "company_name": "Madit Hotel",
+    "theme": {
+        "primary_color": "#2E86AB",
+        "secondary_color": "#A23B72",
+        "accent_color": "#F18F01",
+        "success_color": "#C73E1D",
+        "background_color": "#F5F5F5",
+        "text_color": "#2C3E50"
+    }
+}
