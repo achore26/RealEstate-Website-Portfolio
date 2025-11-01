@@ -4,6 +4,9 @@
   --vh: 1vh;
   --mobile-padding: 20px;
   --desktop-padding: 40px;
+  /* KITO Brand Colors */
+  --kito-orange: #FF8C42;
+  --kito-orange-hover: #FF7A2E;
 }
 
 * {
@@ -178,6 +181,17 @@ body.home {
   z-index: 1000;
 }
 
+.logo-img {
+  height: 50px;
+  width: auto;
+  transition: all 0.3s ease;
+  filter: brightness(1);
+}
+
+.logo-img:hover {
+  filter: brightness(0.8);
+}
+
 .logo-text {
   color: white;
   font-size: 1.2rem;
@@ -219,6 +233,10 @@ body.home {
 
 .nav-toggle:hover {
   background: rgba(0, 0, 0, 0.7);
+}
+
+.nav-toggle:hover .hamburger-line {
+  background-color: var(--kito-orange);
 }
 
 .hamburger-line {
@@ -288,17 +306,17 @@ body.home {
 }
 
 .nav-menu a:hover {
-  color: #aaa;
+  color: var(--kito-orange);
 }
 
 .nav-menu a::after {
   content: "";
   position: absolute;
   width: 0;
-  height: 1px;
+  height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: white;
+  background-color: var(--kito-orange);
   transition: width 0.3s ease;
 }
 
@@ -558,8 +576,8 @@ ge-specific styles */
 }
 
 .footer-cta .email-link:hover {
-  color: white;
-  border-bottom-color: white;
+  color: var(--kito-orange);
+  border-bottom-color: var(--kito-orange);
 }
 
 .footer-info {
@@ -598,7 +616,7 @@ ge-specific styles */
 }
 
 .footer-column a:hover {
-  color: #ccc;
+  color: var(--kito-orange);
 }
 
 .footer-bottom {
@@ -628,7 +646,7 @@ ge-specific styles */
 }
 
 .social-links a:hover {
-  color: #ccc;
+  color: var(--kito-orange);
 }
 
 /* Hero background images for different pages - DESKTOP FIRST */
@@ -888,7 +906,7 @@ ge-specific styles */
 
 .back-to-top:hover {
   background: rgba(0, 0, 0, 0.9);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: var(--kito-orange);
   transform: translateY(-2px);
 }
 
@@ -896,10 +914,11 @@ ge-specific styles */
   width: 20px;
   height: 20px;
   fill: white;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .back-to-top:hover svg {
+  fill: var(--kito-orange);
   transform: translateY(-2px);
 }
 
@@ -908,6 +927,10 @@ ge-specific styles */
   .logo-container {
     top: 20px;
     left: 20px;
+  }
+
+  .logo-img {
+    height: 40px;
   }
 
   .logo-text {
@@ -1015,9 +1038,9 @@ tact Form Styles */
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--kito-orange);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 2px rgba(255, 140, 66, 0.2);
 }
 
 .form-group input::placeholder,
@@ -1059,10 +1082,11 @@ tact Form Styles */
 }
 
 .submit-btn:hover {
-  background: white;
-  color: #1a1a1a;
+  background: var(--kito-orange);
+  border-color: var(--kito-orange);
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(255, 140, 66, 0.4);
 }
 
 .submit-btn svg {
@@ -1228,6 +1252,10 @@ anced Mobile Optimizations */
   .logo-container {
     top: 15px;
     left: 15px;
+  }
+
+  .logo-img {
+    height: 35px;
   }
 
   .logo-text {
