@@ -74,92 +74,42 @@ body.home {
   height: 100vh;
 }
 
-/* Video Background */
-#video-background {
+/* Image Slideshow Background */
+.slideshow-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-/* GIF Fallback Background */
-#gif-fallback {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  object-position: center;
   z-index: -2;
-  display: none;
-  /* Smooth transition when showing */
-  opacity: 0;
-  transition: opacity 0.5s ease-in;
+  overflow: hidden;
 }
 
-#gif-fallback.active {
-  display: block;
-  opacity: 1;
-}
-
-/* Video Loading Animation */
-.video-loader {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  text-align: center;
-  color: white;
-  font-size: 14px;
-  opacity: 1;
-  transition: opacity 0.5s ease-out;
-}
-
-.video-loader.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.loader-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: #fff;
-  animation: spin 1s ease-in-out infinite;
-  margin: 0 auto 10px;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Hide loader on desktop when mobile background is not visible */
-@media (min-width: 769px) {
-  .video-loader {
-    display: block;
-  }
-}
-
-/* Mobile Image Background */
-#mobile-background {
-  position: fixed;
+.slideshow-image {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;          /* use viewport units */
-  height: 100vh;         /* fill viewport */
-  object-fit: cover;     /* keep cover but on explicit viewport size */
-  object-position: center;
-  z-index: -1;
-  display: none;         /* still show only on mobile via media queries */
-  /* iOS Safari specific fixes */
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  /* Performance optimization */
+  will-change: opacity;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+
+.slideshow-image.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Smooth fade transition between slides */
+.slideshow-image:not(.active) {
+  z-index: 0;
 }
 
 /* Overlay to make text more readable */
@@ -173,6 +123,118 @@ body.home {
   z-index: -1;
 }
 
+/* Animated Stars Background */
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Hero Stars - for page heroes */
+.hero-stars {
+  position: absolute;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite ease-in-out;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+.star.glitter {
+  background: var(--kito-orange);
+  box-shadow: 0 0 8px var(--kito-orange), 0 0 12px var(--kito-orange);
+  animation: glitterTwinkle 2s infinite ease-in-out;
+}
+
+.star.large {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 1);
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes glitterTwinkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) rotate(180deg);
+  }
+}
+
+/* Fluid Glitter Effect on Hover */
+.main-content {
+  position: relative;
+}
+
+.main-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 140, 66, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.main-content:hover::before {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255, 140, 66, 0.15) 0%, rgba(255, 140, 66, 0.05) 50%, transparent 70%);
+}
+
+/* Glitter particles on hover */
+.glitter-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--kito-orange);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatUp 2s ease-out forwards;
+  box-shadow: 0 0 10px var(--kito-orange);
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.5) rotate(360deg);
+  }
+}
+
 /* Logo */
 .logo-container {
   position: fixed;
@@ -182,7 +244,7 @@ body.home {
 }
 
 .logo-img {
-  height: 50px;
+  height: 70px;
   width: auto;
   transition: all 0.3s ease;
   filter: brightness(1);
@@ -190,6 +252,7 @@ body.home {
 
 .logo-img:hover {
   filter: brightness(0.8);
+  transform: scale(1.05);
 }
 
 .logo-text {
@@ -346,12 +409,245 @@ body.home {
   text-transform: uppercase;
 }
 
+/* Hero Title */
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.hero-title:hover {
+  transform: scale(1.02);
+  text-shadow: 0 0 30px rgba(255, 140, 66, 0.5);
+}
+
+.hero-title .highlight {
+  color: white;
+  position: relative;
+  display: inline-block;
+  transition: all 0.4s ease;
+}
+
+.hero-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--kito-orange);
+  transition: width 0.4s ease;
+  box-shadow: 0 0 10px var(--kito-orange);
+}
+
+.hero-title:hover .highlight {
+  color: var(--kito-orange);
+  text-shadow: 0 0 20px rgba(255, 140, 66, 0.6);
+}
+
+.hero-title:hover .highlight::after {
+  width: 100%;
+}
+
 .tagline {
   font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 3px;
   max-width: 600px;
   line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 140, 66, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.cta-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.cta-button:hover {
+  background: var(--kito-orange);
+  border-color: var(--kito-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 140, 66, 0.4), 0 0 40px rgba(255, 140, 66, 0.2);
+}
+
+.cta-button svg {
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-button:hover svg {
+  transform: translateX(5px);
+}
+
+.cta-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Page Hero Sections */
+.page-hero {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero hover effect with glitter */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 140, 66, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.page-hero:hover::after {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255, 140, 66, 0.15) 0%, rgba(255, 140, 66, 0.05) 50%, transparent 70%);
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.page-hero-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+  position: relative;
+}
+
+.page-hero h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  z-index: 2;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Page Hero Title with Orange Hover Effect */
+.page-hero-title {
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.page-hero-title:hover {
+  transform: scale(1.02);
+  text-shadow: 0 0 30px rgba(255, 140, 66, 0.5);
+}
+
+.page-hero-title .hero-highlight {
+  color: white;
+  position: relative;
+  display: inline-block;
+  transition: all 0.4s ease;
+}
+
+.page-hero-title .hero-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--kito-orange);
+  transition: width 0.4s ease;
+  box-shadow: 0 0 10px var(--kito-orange);
+}
+
+.page-hero-title:hover .hero-highlight {
+  color: var(--kito-orange);
+  text-shadow: 0 0 20px rgba(255, 140, 66, 0.6);
+}
+
+.page-hero-title:hover .hero-highlight::after {
+  width: 100%;
 }
 
 /* Sections */
@@ -399,20 +695,9 @@ footer {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  /* Hide video and show image on mobile */
-  #video-background {
-    display: none;
-  }
-  
-  #mobile-background {
-    display: block;
-  }
-  
-  /* Show GIF fallback on mobile if video fails */
-  #gif-fallback.mobile-active {
-    display: block !important;
-    opacity: 1 !important;
-    z-index: -1;
+  /* Slideshow optimization for mobile */
+  .slideshow-image {
+    background-attachment: scroll;
   }
 
   /* Fix gallery images - prevent over-cropping on mobile */
@@ -427,9 +712,31 @@ footer {
     letter-spacing: 5px;
   }
 
+  .hero-title {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    line-height: 1.3;
+  }
+
+  .page-hero-title {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+  }
+
+  .page-hero-title .hero-highlight::after {
+    height: 2px;
+  }
+
   .tagline {
     font-size: 1.2rem;
     letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
   }
 
   .nav-menu a {
@@ -930,7 +1237,7 @@ ge-specific styles */
   }
 
   .logo-img {
-    height: 40px;
+    height: 55px;
   }
 
   .logo-text {
@@ -1242,10 +1549,37 @@ anced Mobile Optimizations */
     line-height: 1.2;
   }
 
+  .hero-title {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    padding: 0 10px;
+  }
+
+  .hero-title .highlight::after {
+    height: 2px;
+  }
+
+  .page-hero-title {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .page-hero-title .hero-highlight::after {
+    height: 2px;
+  }
+
   .tagline {
     font-size: 1rem;
     letter-spacing: 1px;
     padding: 0 10px;
+    margin-bottom: 25px;
+  }
+
+  .cta-button {
+    padding: 12px 25px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
   }
 
   /* Navigation improvements */
@@ -1255,7 +1589,7 @@ anced Mobile Optimizations */
   }
 
   .logo-img {
-    height: 35px;
+    height: 45px;
   }
 
   .logo-text {
@@ -1443,6 +1777,16 @@ anced Mobile Optimizations */
   .logo {
     font-size: 2rem;
     letter-spacing: 2px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+  }
+
+  .page-hero-title {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
   }
 
   .tagline {

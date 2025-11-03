@@ -6,7 +6,13 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <title>Contact - UNDER CONSTRUCTION</title>
+    <title>Contact - KITO 360</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/media/Send/KITO_Logo-01.png" />
+    <link rel="shortcut icon" type="image/png" href="assets/media/Send/KITO_Logo-01.png" />
+    <link rel="apple-touch-icon" href="assets/media/Send/KITO_Logo-01.png" />
+    
     <!-- Preload critical images for mobile -->
     <link rel="preload" href="assets/media/skyline.jpg" as="image">
     <link rel="stylesheet" href="assets/css/styles.css" />
@@ -42,8 +48,12 @@
     <section class="page-hero contact-hero">
       <!-- Mobile fallback image -->
       <img src="assets/media/skyline.jpg" alt="Contact Hero" class="mobile-hero-img" loading="eager">
+      
+      <!-- Animated Stars Background -->
+      <div class="stars-container hero-stars" id="contactStars"></div>
+      
       <div class="page-hero-content">
-        <h1>Contact</h1>
+        <h1 class="page-hero-title"><span class="hero-highlight">Contact</span></h1>
       </div>
       <div class="scroll-indicator">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,51 +99,57 @@
     <section class="contact-form-section">
       <div class="form-container">
         <div class="form-header">
-          <h2>Get In Touch</h2>
-          <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+          <h2>Lease Enquiry</h2>
+          <p>Fill out the form below and we'll get back to you within 24 hours.</p>
         </div>
         
         <form class="contact-form" id="contactForm">
           <div class="form-group">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name" required>
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required>
           </div>
           
           <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" required>
+            <label for="phone">Phone *</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
           </div>
           
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="Your email address" required>
           </div>
           
           <div class="form-group">
-            <label for="company">Company/Organization</label>
-            <input type="text" id="company" name="company">
+            <label for="company">Company Name *</label>
+            <input type="text" id="company" name="company" placeholder="Your company name" required>
           </div>
           
           <div class="form-group">
-            <label for="project">Project Type</label>
-            <select id="project" name="project">
-              <option value="">Select a project type</option>
-              <option value="residential">Residential Development</option>
-              <option value="commercial">Commercial Real Estate</option>
-              <option value="mixed-use">Mixed-Use Development</option>
-              <option value="branding">Brand Identity & Marketing</option>
-              <option value="visualization">3D Visualization</option>
+            <label for="business">Type of Business *</label>
+            <select id="business" name="business" required>
+              <option value="">Select your business type</option>
+              <option value="retail">Retail</option>
+              <option value="restaurant">Restaurant / Cafe</option>
+              <option value="office">Office / Corporate</option>
+              <option value="healthcare">Healthcare / Medical</option>
+              <option value="fitness">Fitness / Wellness</option>
+              <option value="education">Education / Training</option>
+              <option value="technology">Technology / IT</option>
+              <option value="professional-services">Professional Services</option>
+              <option value="hospitality">Hospitality / Hotel</option>
+              <option value="entertainment">Entertainment / Leisure</option>
+              <option value="manufacturing">Manufacturing / Industrial</option>
               <option value="other">Other</option>
             </select>
           </div>
           
           <div class="form-group">
-            <label for="message">Project Details *</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, timeline, and any specific requirements..." required></textarea>
+            <label for="message">Additional Information</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about your space requirements, preferred location, timeline, or any other details..."></textarea>
           </div>
           
           <button type="submit" class="submit-btn">
-            <span>Send Message</span>
+            <span>Submit Enquiry</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -145,70 +161,30 @@
     <!-- Footer -->
     <footer class="page-footer">
       <div class="footer-cta">
-        <h3>"END TO END CAMPAIGN MANAGEMENT</h3>
-        <h2>POSITIONING THE WORLD'S MOST ICONIC PROPERTIES"</h2>
-        <a href="mailto:projects@visualhouse.com" class="email-link">PROJECTS@VISUALHOUSE.COM</a>
+        <h3>GET IN TOUCH</h3>
+        <h2>BE APART OF NAKURU'S NEXT CHAPTER</h2>
+        <a href="tel:+254714111164" class="email-link">+254 714 111 164</a>
       </div>
       
       <div class="footer-info">
         <div class="footer-grid">
           <div class="footer-column">
-            <h4>NEW YORK</h4>
-            <p>45 Broadway</p>
-            <p>25th Floor</p>
-            <p>New York, NY 10006</p>
-            <p>T: 646.661.5430</p>
-          </div>
-          
-          <div class="footer-column">
-            <h4>LONDON</h4>
-            <p>83 Rivington Street</p>
-            <p>2nd Floor</p>
-            <p>London EC2A 3AY</p>
-            <p>T: +44 (0)20 3637 5430</p>
-          </div>
-          
-          <div class="footer-column">
-            <h4>MIAMI</h4>
-            <p>900 SE 2nd St</p>
-            <p>Suite 2100</p>
-            <p>Miami, FL 33131</p>
-            <p>T: 305.677.8430</p>
-          </div>
-          
-          <div class="footer-column">
-            <h4>LOS ANGELES</h4>
-            <p>8605 Santa Monica Blvd</p>
-            <p>Suite 88394</p>
-            <p>West Hollywood, CA 90069</p>
-            <p>T: 310.855.8430</p>
-          </div>
-          
-          <div class="footer-column">
-            <h4>DUBAI</h4>
-            <p>Bay Square Building 1</p>
-            <p>Level 2, Office 215</p>
-            <p>Dubai Marina</p>
-            <p>T: +971 4 447 4430</p>
-          </div>
-          
-          <div class="footer-column">
-            <h4>HONG KONG</h4>
-            <p>36 Lyndhurst Terrace</p>
-            <p>Central</p>
-            <p>Hong Kong</p>
-            <p>T: +852 3008 5430</p>
+            <h4>NAKURU, KENYA</h4>
+            <p>Nakuru-Nairobi Highway</p>
+            <p>Nakuru, Kenya</p>
+            <p>20100</p>
+            <p>T: <a href="tel:+254714111164">+254 714 111 164</a></p>
           </div>
         </div>
         
         <div class="footer-column">
-          <h4>PRESS & GENERAL INQUIRIES</h4>
-          <p><a href="mailto:info@visualhouse.com">info@visualhouse.com</a></p>
+          <h4>GENERAL INQUIRIES</h4>
+          <p><a href="mailto:info@kito360.com">info@kito360.com</a></p>
         </div>
       </div>
       
       <div class="footer-bottom">
-        <p>© AFRICANA KENYA</p>
+        <p>© 2024 KITO 360 - All Rights Reserved</p>
         <div class="social-links">
           <a href="#" aria-label="Facebook">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -247,5 +223,36 @@
     </div>
 
     <script src="assets/js/main.js"></script>
+    
+    <!-- Hero Stars Animation -->
+    <script>
+      function createHeroStars(containerId) {
+        const starsContainer = document.getElementById(containerId);
+        if (!starsContainer) return;
+        
+        const numberOfStars = window.innerWidth > 768 ? 100 : 60;
+        
+        for (let i = 0; i < numberOfStars; i++) {
+          const star = document.createElement('div');
+          star.className = 'star';
+          
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          star.style.animationDelay = Math.random() * 3 + 's';
+          
+          if (Math.random() > 0.8) {
+            star.classList.add('large');
+          }
+          
+          if (Math.random() > 0.85) {
+            star.classList.add('glitter');
+          }
+          
+          starsContainer.appendChild(star);
+        }
+      }
+      
+      window.addEventListener('load', () => createHeroStars('contactStars'));
+    </script>
   </body>
 </html>

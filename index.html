@@ -1,239 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <title>UNDER CONSTRUCTION- We Envision Design and Evoke Desire</title>
-    <!-- AOS (Animate On Scroll) CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css" />
-  </head>
-  <body class="home">
-    <!-- Video Background with mobile optimizations -->
-    <video id="video-background" autoplay muted loop playsinline preload="auto" poster="assets/media/01.jpg">
-      <source src="assets/media/background-video.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    
-    <!-- GIF Fallback for when video fails to load -->
-    <img id="gif-fallback" 
-         src="assets/media/home-gif.gif" 
-         alt="Background Animation" 
-         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; display: none;" />
-    
-    <!-- Video loading indicator -->
-    <div id="video-loader" class="video-loader">
-      <div class="loader-spinner"></div>
-      <p>Loading...</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>KITO 360</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/media/Send/KITO_Logo-01.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/media/Send/KITO_Logo-01.png" />
+  <link rel="apple-touch-icon" href="assets/media/Send/KITO_Logo-01.png" />
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body class="home">
+  <!-- Image Slideshow Background -->
+  <div class="slideshow-container" id="slideshowContainer">
+    <div class="slideshow-image active" style="background-image: url('assets/media/New_images/V01_1 - Photo.jpg');">
     </div>
-    
-    <!-- Mobile Background Image - Load immediately (do NOT lazyload) -->
-    <img id="mobile-background"
-         src="assets/media/01.jpg"
-         alt="Background"
-         decoding="async"
-         importance="high"
-         onerror="this.src='assets/media/about-hero.jpg'; this.onerror=null;" />
-    
-    <!-- Fallback for when JavaScript is disabled -->
-    <noscript>
-      <img src="assets/media/01.jpg" alt="Background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-1;">
-    </noscript>
-    
-    <div class="overlay"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_2 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_3 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_4 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_5 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_6 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_7 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_8 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_9 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_10 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_11 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_12 - Photo.jpg');"></div>
+    <div class="slideshow-image" style="background-image: url('assets/media/New_images/V01_13 - Photo.jpg');"></div>
+  </div>
 
-    <!-- Logo -->
-    <div class="logo-container" data-aos="fade-in" data-aos-delay="300">
-      <a href="index.html">
-        <img src="assets/media/Send/KITO_Logo-01.png" alt="KITO Logo" class="logo-img">
-      </a>
-    </div>
+  <div class="overlay"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-      <button class="nav-toggle">
-        <div class="hamburger-line"></div>
-        <div class="hamburger-line"></div>
-        <div class="hamburger-line"></div>
-      </button>
-    </nav>
+  <!-- Animated Stars Background -->
+  <div class="stars-container" id="starsContainer"></div>
 
-    <div class="nav-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="listings.html">Listings</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
+  <!-- Logo -->
+  <div class="logo-container" data-aos="fade-in" data-aos-delay="300">
+    <a href="index.html">
+      <img src="assets/media/Send/KITO_Logo-01.png" alt="KITO Logo" class="logo-img">
+    </a>
+  </div>
+  </div>
 
-    <!-- Main Content -->
-    <section id="home" class="main-content">
-      <h1 class="logo" data-aos="zoom-in" data-aos-delay="500">UNDER CONSTRUCTION</h1>
-      <p class="tagline" data-aos="fade-up" data-aos-delay="700">WE ENVISION DESIGN AND EVOKE DESIRE</p>
-    </section>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <button class="nav-toggle">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </button>
+  </nav>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <div class="nav-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="listings.html">Listings</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <section id="home" class="main-content">
+    <h1 class="hero-title" data-aos="zoom-in" data-aos-delay="500">
+      BE APART OF <span class="highlight">NAKURU'S</span> NEXT CHAPTER
+    </h1>
+    <p class="tagline" data-aos="fade-up" data-aos-delay="700">WE ENVISION DESIGN AND EVOKE DESIRE</p>
+    <a href="contact.html" class="cta-button" data-aos="fade-up" data-aos-delay="900">
+      LEASE ENQUIRY
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
       </svg>
-    </div>
+    </a>
+  </section>
 
-    <!-- Lazysizes for responsive images -->
-    <script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js" async></script>
-    <!-- AOS (Animate On Scroll) JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Mobile Optimizer -->
-    <script src="assets/js/mobile-optimizer.js"></script>
-    <script>
-      // Register Service Worker for video caching
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-              console.log('Service Worker registered successfully:', registration.scope);
-              
-              // Preload video after service worker is active
-              if (registration.active) {
-                preloadVideo(registration);
-              } else {
-                registration.addEventListener('statechange', () => {
-                  if (registration.active) {
-                    preloadVideo(registration);
-                  }
-                });
-              }
-            })
-            .catch(error => {
-              console.log('Service Worker registration failed:', error);
-            });
-        });
-        
-        function preloadVideo(registration) {
-          // Ask service worker to cache video proactively
-          const channel = new MessageChannel();
-          channel.port1.onmessage = event => {
-            if (event.data.success) {
-              console.log('Video preloaded successfully');
-            }
-          };
-          
-          registration.active.postMessage({
-            type: 'CACHE_VIDEO'
-          }, [channel.port2]);
-        }
-      }
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </div>
 
-      // Video loading handler with GIF fallback
-      const video = document.getElementById('video-background');
-      const loader = document.getElementById('video-loader');
-      const gifFallback = document.getElementById('gif-fallback');
-      const isMobile = window.innerWidth <= 768;
-      
-      let videoLoadTimeout;
-      let videoLoaded = false;
-      
-      // Hide loader when video is ready to play
-      function hideLoader() {
-        if (loader) {
-          loader.classList.add('hidden');
-          setTimeout(() => {
-            loader.style.display = 'none';
-          }, 500);
-        }
-      }
-      
-      // Show GIF fallback
-      function showGifFallback() {
-        console.log('Video failed to load, showing GIF fallback');
-        if (gifFallback) {
-          gifFallback.style.display = 'block';
-          setTimeout(() => {
-            gifFallback.classList.add('active');
-          }, 100);
-        }
-        hideLoader();
-      }
-      
-      // Video successfully loaded
-      function onVideoSuccess() {
-        console.log('Video loaded successfully');
-        videoLoaded = true;
-        clearTimeout(videoLoadTimeout);
-        hideLoader();
-        
-        // Hide GIF fallback if it was shown
-        if (gifFallback && gifFallback.classList.contains('active')) {
-          gifFallback.classList.remove('active');
-          setTimeout(() => {
-            gifFallback.style.display = 'none';
-          }, 500);
-        }
-      }
-      
-      if (video && loader) {
-        // Set up video event listeners
-        video.addEventListener('canplaythrough', onVideoSuccess);
-        video.addEventListener('playing', onVideoSuccess);
-        
-        // Handle video loading errors
-        video.addEventListener('error', showGifFallback);
-        video.addEventListener('abort', showGifFallback);
-        video.addEventListener('stalled', showGifFallback);
-        
-        // Fallback timeout - if video doesn't load in 5 seconds, show GIF
-        videoLoadTimeout = setTimeout(() => {
-          if (!videoLoaded) {
-            console.log('Video loading timeout, showing GIF fallback');
-            showGifFallback();
-          }
-        }, 5000);
-        
-        // On mobile, prefer GIF fallback after shorter timeout
-        if (isMobile) {
-          setTimeout(() => {
-            if (!videoLoaded && navigator.connection && 
-                (navigator.connection.effectiveType === 'slow-2g' || 
-                 navigator.connection.effectiveType === '2g')) {
-              console.log('Slow connection detected on mobile, showing GIF');
-              showGifFallback();
-            }
-          }, 2000);
-        }
-        
-        // Also hide loader immediately if mobile background is shown
-        if (isMobile) {
-          setTimeout(hideLoader, 1000);
-        }
-      }
+  <!-- Lazysizes for responsive images -->
+  <script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js" async></script>
+  <!-- AOS (Animate On Scroll) JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Mobile Optimizer -->
+  <script src="assets/js/mobile-optimizer.js"></script>
+  <script>
+    // Image Slideshow
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slideshow-image');
+    const totalSlides = slides.length;
 
-      // Initialize AOS with mobile-optimized settings
-      AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 50,           // Reduced offset for better mobile triggering
-        easing: 'ease-in-out',
-        // Better mobile handling
-        disable: false,       // Don't disable on mobile
-        startEvent: 'DOMContentLoaded', // Ensure it starts immediately
-        useClassNames: false,
-        disableMutationObserver: false,
-        debounceDelay: 50,    // Faster response
-        throttleDelay: 99,    // Optimized for mobile
+    function showNextSlide() {
+      // Remove active class from current slide
+      slides[currentSlide].classList.remove('active');
+
+      // Move to next slide
+      currentSlide = (currentSlide + 1) % totalSlides;
+
+      // Add active class to new slide
+      slides[currentSlide].classList.add('active');
+    }
+
+    // Change slide every 5 seconds
+    setInterval(showNextSlide, 5000);
+
+    // Preload all images
+    window.addEventListener('load', () => {
+      slides.forEach((slide, index) => {
+        const img = new Image();
+        const bgImage = slide.style.backgroundImage.match(/url\(['"]?([^'"]+)['"]?\)/);
+        if (bgImage && bgImage[1]) {
+          img.src = bgImage[1];
+        }
       });
-      
-      // Force AOS refresh on mobile to handle non-scrolling pages
-      if (window.innerWidth <= 768) {
-        setTimeout(() => {
-          AOS.refresh();
-        }, 100);
+    });
+
+    // Initialize AOS with mobile-optimized settings
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 50,           // Reduced offset for better mobile triggering
+      easing: 'ease-in-out',
+      // Better mobile handling
+      disable: false,       // Don't disable on mobile
+      startEvent: 'DOMContentLoaded', // Ensure it starts immediately
+      useClassNames: false,
+      disableMutationObserver: false,
+      debounceDelay: 50,    // Faster response
+      throttleDelay: 99,    // Optimized for mobile
+    });
+
+    // Force AOS refresh on mobile to handle non-scrolling pages
+    if (window.innerWidth <= 768) {
+      setTimeout(() => {
+        AOS.refresh();
+      }, 100);
+    }
+  </script>
+
+  <!-- Stars and Glitter Animation Script -->
+  <script>
+    // Create animated stars
+    function createStars() {
+      const starsContainer = document.getElementById('starsContainer');
+      if (!starsContainer) return;
+
+      const numberOfStars = window.innerWidth > 768 ? 150 : 80;
+
+      for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+
+        // Random positioning
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+
+        // Random animation delay
+        star.style.animationDelay = Math.random() * 3 + 's';
+
+        // Some stars are larger
+        if (Math.random() > 0.8) {
+          star.classList.add('large');
+        }
+
+        // Some stars are glitter (orange)
+        if (Math.random() > 0.85) {
+          star.classList.add('glitter');
+        }
+
+        starsContainer.appendChild(star);
       }
-    </script>
-    <script src="assets/js/main.js"></script>
-  </body>
+    }
+
+    // Create glitter particles on mouse move
+    function createGlitterParticle(x, y) {
+      const particle = document.createElement('div');
+      particle.className = 'glitter-particle';
+      particle.style.left = x + 'px';
+      particle.style.top = y + 'px';
+
+      document.body.appendChild(particle);
+
+      // Remove particle after animation
+      setTimeout(() => {
+        particle.remove();
+      }, 2000);
+    }
+
+    // Add glitter effect on mouse move over main content
+    let lastGlitterTime = 0;
+    const mainContent = document.querySelector('.main-content');
+
+    if (mainContent) {
+      mainContent.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        // Throttle glitter creation
+        if (now - lastGlitterTime > 100) {
+          if (Math.random() > 0.7) {
+            createGlitterParticle(e.clientX, e.clientY);
+          }
+          lastGlitterTime = now;
+        }
+      });
+    }
+
+    // Initialize stars when page loads
+    window.addEventListener('load', createStars);
+
+    // Recreate stars on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const starsContainer = document.getElementById('starsContainer');
+        if (starsContainer) {
+          starsContainer.innerHTML = '';
+          createStars();
+        }
+      }, 500);
+    });
+  </script>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
 </html>

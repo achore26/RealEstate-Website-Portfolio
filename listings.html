@@ -7,7 +7,13 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Listings - Under Construction</title>
+  <title>Listings - KITO 360</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/media/Send/KITO_Logo-01.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/media/Send/KITO_Logo-01.png" />
+  <link rel="apple-touch-icon" href="assets/media/Send/KITO_Logo-01.png" />
+  
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
@@ -42,8 +48,12 @@
   <section class="page-hero listings-hero">
     <!-- Mobile fallback image -->
     <img src="assets/media/algo.png" alt="Listings Hero" class="mobile-hero-img" loading="eager">
+    
+    <!-- Animated Stars Background -->
+    <div class="stars-container hero-stars" id="listingsStars"></div>
+    
     <div class="page-hero-content">
-      <h1>Listings</h1>
+      <h1 class="page-hero-title"><span class="hero-highlight">Listings</span></h1>
     </div>
     <div class="scroll-indicator">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,70 +112,30 @@
   <!-- Footer -->
   <footer class="page-footer">
     <div class="footer-cta">
-      <h3>"END TO END CAMPAIGN MANAGEMENT</h3>
-      <h2>POSITIONING THE WORLD'S MOST ICONIC PROPERTIES"</h2>
-      <a href="mailto:projects@visualhouse.com" class="email-link">PROJECTS@VISUALHOUSE.COM</a>
+      <h3>GET IN TOUCH</h3>
+      <h2>BE APART OF NAKURU'S NEXT CHAPTER</h2>
+      <a href="tel:+254714111164" class="email-link">+254 714 111 164</a>
     </div>
 
     <div class="footer-info">
       <div class="footer-grid">
         <div class="footer-column">
-          <h4>NEW YORK</h4>
-          <p>45 Broadway</p>
-          <p>25th Floor</p>
-          <p>New York, NY 10006</p>
-          <p>T: 646.661.5430</p>
-        </div>
-
-        <div class="footer-column">
-          <h4>LONDON</h4>
-          <p>83 Rivington Street</p>
-          <p>2nd Floor</p>
-          <p>London EC2A 3AY</p>
-          <p>T: +44 (0)20 3637 5430</p>
-        </div>
-
-        <div class="footer-column">
-          <h4>MIAMI</h4>
-          <p>900 SE 2nd St</p>
-          <p>Suite 2100</p>
-          <p>Miami, FL 33131</p>
-          <p>T: 305.677.8430</p>
-        </div>
-
-        <div class="footer-column">
-          <h4>LOS ANGELES</h4>
-          <p>8605 Santa Monica Blvd</p>
-          <p>Suite 88394</p>
-          <p>West Hollywood, CA 90069</p>
-          <p>T: 310.855.8430</p>
-        </div>
-
-        <div class="footer-column">
-          <h4>DUBAI</h4>
-          <p>Bay Square Building 1</p>
-          <p>Level 2, Office 215</p>
-          <p>Dubai Marina</p>
-          <p>T: +971 4 447 4430</p>
-        </div>
-
-        <div class="footer-column">
-          <h4>HONG KONG</h4>
-          <p>36 Lyndhurst Terrace</p>
-          <p>Central</p>
-          <p>Hong Kong</p>
-          <p>T: +852 3008 5430</p>
+          <h4>NAKURU, KENYA</h4>
+          <p>Nakuru-Nairobi Highway</p>
+          <p>Nakuru, Kenya</p>
+          <p>20100</p>
+          <p>T: <a href="tel:+254714111164">+254 714 111 164</a></p>
         </div>
       </div>
 
       <div class="footer-column">
-        <h4>PRESS & GENERAL INQUIRIES</h4>
-        <p><a href="mailto:info@visualhouse.com">info@visualhouse.com</a></p>
+        <h4>GENERAL INQUIRIES</h4>
+        <p><a href="mailto:info@kito360.com">info@kito360.com</a></p>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© AFRICANA KENYA</p>
+      <p>© 2024 KITO 360 - All Rights Reserved</p>
       <div class="social-links">
         <a href="#" aria-label="Facebook">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -210,6 +180,37 @@
   </div>
 
   <script src="assets/js/main.js"></script>
+  
+  <!-- Hero Stars Animation -->
+  <script>
+    function createHeroStars(containerId) {
+      const starsContainer = document.getElementById(containerId);
+      if (!starsContainer) return;
+      
+      const numberOfStars = window.innerWidth > 768 ? 100 : 60;
+      
+      for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        
+        if (Math.random() > 0.8) {
+          star.classList.add('large');
+        }
+        
+        if (Math.random() > 0.85) {
+          star.classList.add('glitter');
+        }
+        
+        starsContainer.appendChild(star);
+      }
+    }
+    
+    window.addEventListener('load', () => createHeroStars('listingsStars'));
+  </script>
 </body>
 
 </html>
