@@ -460,7 +460,32 @@ body.home {
   letter-spacing: 3px;
   max-width: 600px;
   line-height: 1.6;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+}
+
+/* Now Leasing Text */
+.now-leasing {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: var(--kito-orange);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  text-shadow: 0 0 30px rgba(255, 140, 66, 0.8), 0 0 50px rgba(255, 140, 66, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 140, 66, 0.8), 0 0 50px rgba(255, 140, 66, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 40px rgba(255, 140, 66, 1), 0 0 70px rgba(255, 140, 66, 0.8), 0 0 100px rgba(255, 140, 66, 0.4);
+    transform: scale(1.02);
+  }
 }
 
 /* CTA Button */
@@ -730,7 +755,13 @@ footer {
   .tagline {
     font-size: 1.2rem;
     letter-spacing: 2px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+  }
+
+  .now-leasing {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
   }
 
   .cta-button {
@@ -1573,7 +1604,13 @@ anced Mobile Optimizations */
     font-size: 1rem;
     letter-spacing: 1px;
     padding: 0 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+  }
+
+  .now-leasing {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
   }
 
   .cta-button {
@@ -1792,6 +1829,12 @@ anced Mobile Optimizations */
   .tagline {
     font-size: 0.9rem;
     letter-spacing: 0.5px;
+  }
+
+  .now-leasing {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
   }
 
   .nav-menu a {
