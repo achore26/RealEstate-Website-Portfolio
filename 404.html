@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | KITO 360</title>
+  <link rel="icon" type="image/png" href="assets/media/Send/KITO_Logo-01.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, #1a1a1a 0%, #0f0f0f 100%);
+      text-align: center;
+      padding: 20px;
+    }
+    .error-content h1 {
+      font-size: 8rem;
+      color: var(--kito-orange);
+      margin-bottom: 20px;
+    }
+    .error-content h2 {
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 20px;
+    }
+    .error-content p {
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+    .error-btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: var(--kito-orange);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .error-btn:hover {
+      background: var(--kito-orange-hover);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div class="error-content">
+      <h1>404</h1>
+      <h2>Page Not Found</h2>
+      <p>The page you're looking for doesn't exist or has been moved.</p>
+      <a href="index.html" class="error-btn">Go Home</a>
+    </div>
+  </div>
+</body>
+</html>

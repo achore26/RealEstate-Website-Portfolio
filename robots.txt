@@ -1,0 +1,10 @@
+# robots.txt for KITO 360
+User-agent: *
+Allow: /
+
+# Disallow admin or private directories (if any)
+Disallow: /assets/js/
+Disallow: /.git/
+
+# Sitemap location
+Sitemap: https://www.kito360.com/sitemap.xml
