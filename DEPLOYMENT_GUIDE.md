@@ -1,4 +1,4 @@
-# KITO 360 - Deployment & Optimization Guide
+# 360 KITO - Deployment & Optimization Guide
 
 ## ✅ Pre-Deployment Checklist
 

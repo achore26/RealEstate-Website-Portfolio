@@ -1,4 +1,4 @@
-# robots.txt for KITO 360
+# robots.txt for 360 KITO
 User-agent: *
 Allow: /
 
@@ -7,4 +7,4 @@ Disallow: /assets/js/
 Disallow: /.git/
 
 # Sitemap location
-Sitemap: https://www.kito360.com/sitemap.xml
+Sitemap: https://www.360kito.com/sitemap.xml
